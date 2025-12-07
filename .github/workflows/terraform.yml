@@ -1,0 +1,31 @@
+name: Deploy code to GCP
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: 'Checkout code'
+      uses: 'actions/checkout@v2'
+
+    - name: 'Authenticate with GCP'
+      id: auth
+      uses: 'google-github-actions/auth@v2'
+      with:
+        project_id: 'tokyo-vigil-472618-u2'
+        workload_identity_provider: 'projects/528841817252/locations/global/workloadIdentityPools/github-wif-pool/providers/github-environments'
+        
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v2'
