@@ -24,8 +24,8 @@ jobs:
       id: auth
       uses: 'google-github-actions/auth@v2'
       with:
-        project_id: 'tokyo-vigil-472618-u2'
-        workload_identity_provider: 'projects/528841817252/locations/global/workloadIdentityPools/github-wif-pool/providers/github-environments'
+        project_id: 'prj-b-cicd-wif-gh-9abe'
+        workload_identity_provider: 'projects/115378629654/locations/global/workloadIdentityPools/foundation-pool/providers/foundation-gh-provider'
         
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v2'
